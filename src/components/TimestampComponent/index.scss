@@ -1,0 +1,23 @@
+.timestamp-component {
+  min-height: 200px;
+  max-height: 350px;
+  width: 90%;
+  background-color: lightgrey;
+  overflow: auto;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 8px;
+
+  &__list {
+    list-style-type: none;
+    padding-left: 20px;
+    font-style: oblique;
+    font-weight: normal;
+  }
+
+  &__status {
+    width: 90%;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 1px 8px;
+    font-weight: bold;
+    font-size: 20px;
+  }
+}

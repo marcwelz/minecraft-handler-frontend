@@ -1,0 +1,33 @@
+@import url("http://fonts.cdnfonts.com/css/minecraft-4");
+.main-app-component {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: solid 1px lightgrey;
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 100px 0;
+  }
+
+  & button:first-child {
+    margin-bottom: 50px;
+  }
+
+  & button {
+    font-family: "Minecraft", sans-serif;
+    font-size: 25px;
+    background-color: #898c8f;
+    width: 200px;
+    height: 60px;
+  }
+
+  &__timestamp {
+    height: 500px;
+    width: 90%;
+    background-color: lightgrey;
+  }
+}
