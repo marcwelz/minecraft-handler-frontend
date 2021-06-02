@@ -1,6 +1,8 @@
 <template>
     <div class="edit-player-component">
-        <h1>Current online: {{players.length}}</h1>
+        <div class="edit-player-component__online">
+          <h1>Current online: {{players.length}}</h1>
+        </div>
         <div class="edit-player-component__table">
           <table>
             <tr v-for="player in players" :key="player.id">
@@ -22,7 +24,10 @@
 
   export default {
     name: 'EditPlayerComponent',
-    props: ['propsPlayers'],
+    props: {
+      propsPlayers: Array, 
+      command:Function
+    },
     setup(props) {
 
       const players = ref([])
@@ -34,6 +39,7 @@
       const handleClick = (slelectedPlayer) => {
         for(let i = 0; i < players.value.length; i++) {
           if(players.value[i].id === slelectedPlayer.id) {
+            props.command(players.value[i].name)
             players.value.splice(i, 1)
           }
         }

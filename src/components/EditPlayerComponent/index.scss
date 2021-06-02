@@ -4,10 +4,18 @@
   flex-direction: column;
   align-items: center;
 
+  &__online {
+    margin-top: 24px;
+    width: 90%;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 1px 8px;
+    font-weight: bold;
+  }
+
   &__table {
     width: 90%;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 8px;
-    max-height: 700px;
+    max-height: 718px;
     overflow: auto;
 
     table {
@@ -18,6 +26,8 @@
         font-size: 22px;
         letter-spacing: 1.5px;
         padding: 8px 4px;
+        word-wrap: break-word;
+        max-width: 390px;
       }
 
       tr:nth-child(even) {

@@ -21,3 +21,43 @@
     font-size: 20px;
   }
 }
+
+.timestamp-component__console-input {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  z-index: 1;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 1px 8px;
+  height: 24px;
+
+  input[type="text"] {
+    font-size: 16px;
+    font-family: Minecraft;
+    border: none;
+    padding: 2px 20px 0;
+    width: 100%;
+
+    &:focus {
+      outline: none;
+      border: solid 2px black;
+      padding: 0 18px;
+    }
+  }
+
+  &--go-button {
+    font-family: Minecraft;
+    border: none;
+    padding: 0 20px;
+    background-color: white;
+
+    &:hover {
+      cursor: pointer;
+      background-color: lightgrey;
+    }
+
+    &:active {
+      border: solid 2px black;
+      margin: -2px;
+    }
+  }
+}

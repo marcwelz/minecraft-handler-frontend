@@ -4,20 +4,38 @@
         </div>
     <div class="timestamp-component">
         <ul class="timestamp-component__list">
-            <li v-for="time in timestamp" :key="time.event">
-                [EVENT] {{ time.event }}
+            <li v-for="time in timestamps" :key="time.event">
+                {{ time.event }}
             </li>
         </ul>
+    </div>
+    <div class="timestamp-component__console-input">
+        <input type="text" id="elementId" placeholder="Enter a command" v-model="search">
+        <button class="timestamp-component__console-input--go-button" @click="handleCommand">Go</button>
     </div>
 </template>
 
 <script>
+import { ref } from '@vue/reactivity';
     import './index.scss';
     export default {
         name: 'EditPlayerComponent',
         props: {
             state: String,
             timestamp: Array
+        }, setup(props) {
+
+            const timestamps = ref(props.timestamp)
+            const search = ref("")
+
+            const handleCommand = () => {
+                if(search.value !== '') {
+                    timestamps.value.push({event: "[CONSOLE] " + search.value})
+                    search.value = ""
+                }
+            }
+
+            return { handleCommand, search, timestamps }
         }
     }
 

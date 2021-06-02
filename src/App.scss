@@ -1,6 +1,9 @@
 @import url("http://fonts.cdnfonts.com/css/minecraft-4");
+body {
+  background-image: url(assets/minecraft_background.png);
+}
+
 .app {
-  font-family: "Minecraft", sans-serif;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -8,7 +11,54 @@
 }
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  // height: 100vh;
+  background-color: white;
+  // overflow: hidden;
+  font-family: Minecraft, Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.main-app {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: solid 1px lightgrey;
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 100px 0;
+
+    &--start {
+      margin-bottom: 50px;
+    }
+
+    &--stop,
+    &--start {
+      font-family: "Minecraft", sans-serif;
+      font-size: 25px;
+      background-color: #898c8f;
+      width: 200px;
+      height: 60px;
+    }
+  }
+
+  &__timestamp {
+    height: 500px;
+    width: 90%;
+    background-color: lightgrey;
+  }
+}
+
+.footer {
+  margin-top: 10px;
+  max-width: 1200px;
+  background-color: white;
+  text-align: center;
 }
