@@ -1,0 +1,11 @@
+.settings-container {
+  margin-top: 20px;
+
+  input[type="text"] {
+    font-family: Minecraft;
+  }
+
+  &__setting {
+    margin: 10px 0;
+  }
+}
