@@ -1,6 +1,6 @@
 <template>
         <div class="timestamp-component__status">
-            <p>current state: {{ state }}</p>
+            <p>online: {{ state }}</p>
         </div>
     <div class="timestamp-component">
         <ul class="timestamp-component__list">
@@ -31,6 +31,17 @@ import { ref } from '@vue/reactivity';
             const handleCommand = () => {
                 if(search.value !== '') {
                     timestamps.value.push({event: "[CONSOLE] " + search.value})
+
+                    fetch("http://192.168.1.232:8000/server/command", {
+                        method: "Post",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            command: search.value,
+                        }),
+                    }).then((res) => res.status === 200)
+
                     search.value = ""
                 }
             }

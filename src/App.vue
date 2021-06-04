@@ -38,8 +38,8 @@ export default {
       { id: 17, name: 'Bumeli'}, { id: 18, name: 'Joel2'}
     ])
 
-    const status = ref("offline")
     const timestamp = ref([])
+    const status = ref(false)
 
     const getCommands = (command) => {
       timestamp.value.push({ event : "[CONSOLE] /kick " + command })
@@ -47,13 +47,25 @@ export default {
     }
 
     const startServer = () => {
-      status.value = 'online'
+      fetch('http://192.168.1.232:8000/server/start', {
+           method: "get",
+           headers: {
+            'Content-Type': 'application/json',
+          },
+        })
       timestamp.value.push({ event : "[EVENT] startet server at: " + getTime()})
+      updateStatus()
     }
 
     const stopServer = () => {
-      status.value = 'offline'
+      fetch('http://192.168.1.232:8000/server/stop', {
+           method: "get",
+           headers: {
+            'Content-Type': 'application/json',
+          },
+        })
       timestamp.value.push({ event: "[EVENT] stopped server at: " + getTime()})
+      updateStatus()
     }
 
     function getTime() {
@@ -63,10 +75,20 @@ export default {
       return date + " " + time
     }
 
-    // only temporary
-    for(let i = 0; i < 20; i++) {
-      i % 2 ? timestamp.value.push({ event: "[EVENT] stopped server at: " + getTime()}) : timestamp.value.push({ event : "[EVENT] startet server at: " + getTime()})
+    function updateStatus() {
+      fetch('http://192.168.1.232:8000/server/status', {
+           method: "get",
+           headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+        .then(res => res.json())
+        .then((data) => {
+          status.value = data.status
+        })
     }
+
+    updateStatus()
 
     return { propsPlayers, status, startServer, stopServer, timestamp, getCommands }
   }
