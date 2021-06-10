@@ -41,7 +41,7 @@ export default {
   },
   setup() {
 
-    console.log(window.location.hostname + ":8000")
+    const ipadress = "http://" + window.location.hostname + ":8000"
 
     const propsPlayers = ref([
       {id: 1, name: 'Minecrafter2028'}, {id: 2, name: 'Milchmaa'}, {id: 3, name: 'DragonBlood'}, {id: 4, name: 'HansWurst69'}, { id: 5, name: 'Bubii'}, 
@@ -64,7 +64,7 @@ export default {
     }
 
     const startServer = () => {
-      fetch('http://192.168.1.232:8000/server/start', {
+      fetch(ipadress + '/server/start', {
            method: "get",
            headers: {
             'Content-Type': 'application/json',
@@ -75,7 +75,7 @@ export default {
     }
 
     const stopServer = () => {
-      fetch('http://192.168.1.232:8000/server/stop', {
+      fetch(ipadress + '/server/stop', {
            method: "get",
            headers: {
             'Content-Type': 'application/json',
@@ -92,12 +92,8 @@ export default {
       return date + " " + time
     }
 
-    window.addEventListener("keypress", function(e) {
-      console.log(String.fromCharCode(e.keyCode));
-    });
-
     function updateStatus() {
-      fetch('http://192.168.1.232:8000/server/status', {
+      fetch(ipadress + '/server/status', {
            method: "get",
            headers: {
             'Content-Type': 'application/json',

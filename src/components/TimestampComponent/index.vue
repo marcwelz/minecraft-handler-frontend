@@ -32,7 +32,7 @@ import { ref } from '@vue/reactivity';
                 if(search.value !== '') {
                     timestamps.value.push({event: "[CONSOLE] " + search.value})
 
-                    fetch("http://192.168.1.232:8000/server/command", {
+                    fetch("http://" + window.location.hostname + ":8000/server/command", {
                         method: "Post",
                         headers: {
                             "Content-Type": "application/json",

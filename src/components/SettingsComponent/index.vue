@@ -38,6 +38,8 @@ export default {
     name: "SettingsComponent",
     setup() {
 
+        const ipadress = "http://" + window.location.hostname + ":8000"
+
         const worldname = ref("")
         const maxplayers = ref("")
         const motd = ref("")
@@ -45,7 +47,7 @@ export default {
         const pvp = ref(false)
         
         function getServerSettings() {
-            fetch('http://192.168.1.232:8000/server/settings/get', {
+            fetch(ipadress + '/server/settings/get', {
                 method: "get",
                 headers: {
                     'Content-Type': 'application/json',
@@ -65,7 +67,7 @@ export default {
 
         const handleSetting = () => {
             if(worldname.value !== "" && maxplayers.value !== "") {
-                fetch("http://192.168.1.232:8000/server/settings", {
+                fetch(ipadress + "/server/settings", {
                     method: "Post",
                     headers: {
                         "Content-Type": "application/json",
